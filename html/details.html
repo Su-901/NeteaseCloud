@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/details.js"></script>
+    <link rel="stylesheet" href="../css/details.css">
+    <script>
+        $(function(){
+            $("#small").mouseenter(function(){
+                $("#big,#mark").show();
+            }).mouseleave(function(){
+                $("#big,#mark").hide();
+            }).mousemove(function(ev){
+                var l = ev.pageX - $("#small").offset().left - 100;
+                //限制出界
+                if(l <= 0){
+                    l = 0;
+                }
+                if(l >= 220){
+                    l = 220;
+                }
+                var t = ev.pageY - $("#small").offset().top - 100;
+                if(t <= 0){
+                    t = 0;
+                }
+                if(t >= 220){
+                    t = 220;
+                }
+                $("#mark").css({
+                    left: l,
+                    top: t
+                })
+
+                //右边的大图片反方向对应放大倍数移动
+                $("#big img").css({
+                    left: -2 * l,
+                    top: -2 * t
+                })
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div id="header">
+            <a href="https://music.163.com/store/product" class="logo"></a>
+    
+            <div class="header-right">
+                <div class="search">
+                    <input type="text" placeholder="i12真无线">
+                </div>
+                <div class="shopping">
+                    <a href=""></a>
+                </div>
+                <div class="personalCenter">
+                    <div class="photo"></div>
+                    <div class="triangle"></div>
+                    <div class="nav">
+                        <ul class="nav-top">
+                            <li><a href="">我的订单</a></li>
+                            <li><a href="">我的优惠券</a></li>
+                            <li><a href="">我的收货地址</a></li>
+                            <li><a href="">网易云音乐首页</a></li>
+                            <li><a href="">退出</a></li>
+                        </ul>
+                    </div>                    
+    
+                </div>
+            </div>
+        </div>
+    <!-- 首页名称 -->
+    <div class="header-content">
+        <a href="">首页</a>
+        <span>
+            <i></i>
+            本来设计 原创木质冰箱磁贴 创意礼品生日礼物
+        </span>
+        <div class="header-share">
+
+        </div>
+    </div>
+
+    <!-- 商品信息 -->
+    <div class="pic-content">
+        <div id = 'small'>
+                <img src="../images/ia_100000001.jpg" alt="">
+                <div id = 'mark'></div>
+            </div>
+            <div id = 'big'>
+                <img src="../images/ia_100000001.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- 主页底部 -->
+    <div class="bottom">
+            <div class="bottom-content">
+                <ul class="bottom-left">
+                    <li>
+                        <a href="">服务条款</a>
+                        <i>｜</i>
+                        <a href="">隐私政策</a>
+                        <i>｜</i>
+                        <a href="">儿童隐私政策</a>
+                        <i>｜</i>
+                        <a href="">版权投诉指引</a>
+                        <i>｜</i>
+                        <a href="">意见反馈</a>
+                    </li>
+                    <li>
+                        <p>网易公司版权所有©1997-2020&nbsp;&nbsp;&nbsp;杭州乐读科技有限公司运营:
+                            <a href="">浙网文[2018] 3506-263号</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>违法和不良信息举报电话：0571-89853516&nbsp;&nbsp;&nbsp;举报邮箱：
+                            <a href="">ncm5990@163.com</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="">食品经营许可证</a>
+                            <a href="">出版物经营许可证</a>
+                            <a href="">营业执照</a>
+                            网络食品交易第三方平台提供者信息备案: 浙网食A33010041
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            粤B2-20090191-18&nbsp;&nbsp;&nbsp;举报邮箱：
+                            <a href="">工业和信息化部备案管理系统网站</a>
+                        </p>
+                    </li>
+                </ul>
+                <ul class="bottom-right">
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    
+    </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>网易云音乐商城注册</title><script src="../js/jquery-1.10.1.min.js"></script><script src="../js/index2.js"></script><link rel="stylesheet" href="../css/register.css"><script src="../js/index.js"></script></head><body><!-- 顶部 --><div id="header"><a href="https://music.163.com/store/product" class="logo"></a><div class="header-right"><div class="search"><input type="text" placeholder="i12真无线"></div><div class="shopping"><a href=""></a></div><div class="personalCenter"><a class="photo">登录</a><div class="triangle"></div><div class="nav"><ul class="nav-top"><li><a href="">手机号登录</a></li><li><a href="">微信登录</a></li><li><a href="">QQ登录</a></li><li><a href="">新浪微博登录</a></li><li><a href="">网易邮箱登录</a></li></ul></div></div></div></div><!-- 中间内容 --><div class="content"><div class="center"><div class="text"><form action=""><h2>手机号注册</h2><span class="tel-span">手机号</span><br><input type="text" id="tel"><br><span id="tel_span">可通过手机号找回密码</span> <span class="password-span">密码</span><br><input type="text" id="password"><br><span id="password_span">6～18个字符，可使用字母、数字、下划线，需要以字母开头</span> <a class="next">注册</a></form></div></div></div><!-- 主页底部 --><div class="bottom"><div class="bottom-content"><ul class="bottom-left"><li><a href="">服务条款</a> <i>｜</i> <a href="">隐私政策</a> <i>｜</i> <a href="">儿童隐私政策</a> <i>｜</i> <a href="">版权投诉指引</a> <i>｜</i> <a href="">意见反馈</a></li><li><p>网易公司版权所有©1997-2020&nbsp;&nbsp;&nbsp;杭州乐读科技有限公司运营: <a href="">浙网文[2018] 3506-263号</a></p></li><li><p>违法和不良信息举报电话：0571-89853516&nbsp;&nbsp;&nbsp;举报邮箱： <a href="">ncm5990@163.com</a></p></li><li><p><a href="">食品经营许可证</a> <a href="">出版物经营许可证</a> <a href="">营业执照</a> 网络食品交易第三方平台提供者信息备案: 浙网食A33010041</p></li><li><p>粤B2-20090191-18&nbsp;&nbsp;&nbsp;举报邮箱： <a href="">工业和信息化部备案管理系统网站</a></p></li></ul><ul class="bottom-right"><li><a href=""></a></li><li><a href=""></a></li><li><a href=""></a></li><li><a href=""></a></li></ul></div></div></body><script>//    手机号
+        var oTel = document.getElementById ("tel");
+            var oTel_span = document.getElementById ("tel_span");
+        
+        
+            // 获取焦点时显示。
+            oTel.onfocus = function () {
+                oTel_span.style.display = "block";
+                oTel_span.style.color = "grey";
+                oTel_span.innerHTML = "可通过该手机号找回密码"
+            }
+            // 失去焦点
+            oTel.onblur = function(){
+                var oValue1 = oTel.value;
+                if (!oValue1){
+                    oTel_span.style.display = "none";
+                }else{
+                    // 判断长度是否合适
+                    if(oValue1.length != 11){
+                        oTel_span.style.display = "block";
+                        oTel_span.innerHTML = "❗请输入正确的中国大陆手机号";
+                        oTel_span.style.color = "red";
+                    }
+                      
+                      
+                    // 判断是否全部都是数字
+                    else{
+                        var isYes2 = true;
+                        for(var b = 0; b < oValue1.length; b++){
+                            if(!isNum(oValue1[b])){
+                                isYes2 = false;
+                                break;
+                            }
+                     }if(oValue1[0] == 1){
+                          oTel_span.style.display = "block";
+                          oTel_span.innerHTML = "手机号可用";
+                          oTel_span.style.color = "green";                
+                      }else {
+                          oTel_span.style.display = "block";
+                          oTel_span.innerHTML = "❗请输入正确的中国大陆手机号";
+                          oTel_span.style.color = "red";                  
+                      } 
+        
+                    }
+        
+                }
+            }
+        
+            function isNum(charStr){
+                if(
+                    (charStr >= "0" && charStr <= "9")
+                ){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            // 密码！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        
+            var oPassWord = document.getElementById("password");
+            var oPassWord_span = document.getElementById("password_span");
+        
+            // 获取焦点时显示提示
+             oPassWord.onfocus = function(){
+                 oPassWord_span.style.display = "block";
+                 oPassWord_span.style.color = "grey";
+                 oPassWord_span.innerHTML = "6~12个字符 只能用字母和数字"
+             };
+        
+            //  失去焦点
+        
+            oPassWord.onblur = function () {
+                var oCode = oPassWord.value;
+                if(!oCode){
+                    oPassWord_span.style.display = "none";
+                }else{
+                    // 判断已经输入的密码条件
+                    // 判断长度是否符合
+                    if(oCode.length > 12 || oCode.length < 6){
+                        oPassWord_span.innerHTML = "👻长度应该为6~12个字符";
+                        oPassWord_span.style.display = "block";
+                        oPassWord_span.style.color = "red";
+                          
+                       
+                    }else{
+                        var isYes1 = true;
+                        for(var a = 0; a < oCode.length; a++){
+                            if(!isXYZ(oCode[a])){
+                                isYes1 = false;
+                                break;
+                            }
+                        }
+                        if(!isYes1){
+                            oPassWord_span.innerHTML = "🐷密码只能使用数字和字母！";
+                            oPassWord_span.sytle.display = "block";
+                            oPassWord_span.style.color = "red";
+                        }else{
+                            oPassWord_span.innerHTML = "密码可以使用，流批!";
+                            oPassWord_span.style.display = "block";
+                            oPassWord_span.style.color = "green";                    
+                        }
+                    
+                      // 判断密码必须由英文和数字组成
+        
+                    }
+        
+                    }
+            };
+            function isXYZ(charStr) {
+              if (
+                (charStr >= "a" && charStr <= "z") ||
+                (charStr >= "A" && charStr <= "Z") ||
+                (charStr >= "0" && charStr <= "9")
+              ) {
+                return true;
+              } else {
+                return false;
+              }
+            }</script></html>
